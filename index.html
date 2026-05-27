@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>齊藤 健一郎 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>齊藤 健一郎 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. MNTSQ株式会社（モンテスキュー）</a>
+  <a href="#k2">2. オープンワーク株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">マーケティングプランナー</span><span class="badge badge-blue">成長企業</span></div>
+  <div class="co-name">MNTSQ株式会社（モンテスキュー）</div>
+  <div class="co-url"><a href="https://www.mntsq.co.jp" target="_blank">https://www.mntsq.co.jp</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都中央区晴海１丁目８−１０ 晴海アイランド トリトンスクエア オフィスタワーX棟　4階</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>日本を代表する大手企業の41%が導入済み - SAPやSalesforceに匹敵するシェアを持ち、日本経済のデファクトスタンダードになる可能性を秘めています。</li><li>第二創業期のコアメンバー - 営業組織のトップ層が入れ替わるタイミングであり、組織づくりや戦略策定から深く関与できる稀有なフェーズです。</li><li>「ものづくり」に深く関与 - 営業やCSがプロダクト開発のパートナーとして扱われ、CPOやシニアエンジニアと共に新機能を形にする醍醐味があります。</li><li>シニアエンジニア組織の厚み - この1年でシニアエンジニアが3倍に増えており、世界水準の開発力をバックグラウンドに自信を持って提案が可能です。</li><li>壮大なビジョンへの挑戦 - 日本経済600兆円に介在する「契約リードタイム」をゼロにするという、社会的意義の極めて高いミッションに挑めます。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">MNTSQ株式会社は、すべての合意をフェアにするというビジョンのもと、契約・法務業務をテクノロジーで変革するリーガルテック企業。契約の作成・審査・管理からナレッジ化までを一気通貫で支援するMNTSQ CLMを展開し、トヨタ自動車、三菱商事、ENEOS、三井住友銀行など、日本を代表する大手企業への導入実績を有しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>MNTSQ株式会社は、すべての合意をフェアにするというビジョンのもと、契約・法務業務をテクノロジーで変革するリーガルテック企業。契約の作成・審査・管理からナレッジ化までを一気通貫で支援するMNTSQ CLMを展開し、トヨタ自動車、三菱商事、ENEOS、三井住友銀行など、日本を代表する大手企業への導入実績を有しています。特に、日本を代表する大手企業の41%が導入済みという圧倒的な実績を誇り、エンタープライズ領域における高い信頼性と市場浸透力が大きな強みです。</p><p>自然言語処理に強いPKSHA Technologyとの資本技術提携による高い技術力と、長島・大野・常松法律事務所や西村あさひ法律事務所との連携による最高品質のリーガルナレッジを融合。2024年には約10億円の資金調達も実施し、さらなる事業拡大を加速させています。</p><p>現在は、法務部門向けSaaSにとどまらず、契約データとAIを活用したリーガルプラットフォームへ進化する第二創業期。社会インフラである契約のあり方を変え、日本企業の意思決定や事業推進をよりフェアでスピーディーにしていく、社会的意義と事業成長の両方を実感できるフェーズです。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 マーケティングプランナー</div>
+          <div class="job-preview">エンタープライズ特化のBtoBマーケティングを設計し、契約のプラットフォーム実現に向けてマーケティング施策を企画・実行する</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <strong>【MNTSQの本質——「AI×SaaS」ではなく「契約のプラットフォーム」】</strong><p>MNTSQは、いわゆる「AI×SaaS」のスタートアップではありません。目指すのは契約のプラットフォームであり、現在地はその前提となる大手企業の法務部向け業務プラットフォームです。ベンチマークはSalesforce・Workday・SAP——法務の世界はエンプラ基幹システムの最後の空白地帯であり、会計（SAP）・人事（Workday）・CRM（Salesforce）のような王者が不在のなかで市場を創っています。</p><ul><li>現在：大手企業の法務部向け業務プラットフォーム - 契約業務をMNTSQ上で完結させる。10→1000で勝つフェーズ</li><li>次：大手企業の契約プラットフォーム - 法務部→事業部へ展開。LLMにより「事業部向けLegalTech」という新市場が爆誕</li><li>将来：契約交渉プラットフォーム／契約のインフラ - 対外的な契約交渉まで含む社会インフラ。契約件数年間5億件×1通1,000円で5,000億円規模</li></ul><strong>【MNTSQの強み】</strong><ul><li>四大法律事務所との資本業務提携：長島・大野・常松、森・濱田松本、西村あさひの3所と業務資本提携</li><li>エンタープライズ特化戦略：初受注がトヨタ自動車、2番目が三菱商事。売上1兆円以上企業の導入率40%以上</li><li>市場の追い風：リーガルテックはLLMで最もポテンシャルが解放されるマーケット。生成AIとの相性が抜群</li></ul><strong>【募集背景】</strong><p>採用の最優先がエンジニアからGTMへシフトした——今、MNTSQのマーケティングが最も面白いフェーズ。これまでの営業力に頼った成長だけでなく、マーケティング戦略によって市場をリードしていく体制を構築するため、企画をつくりだし、事業成長のエンジンとなるマーケティングプランナーを募集します。</p><strong>【業務内容】</strong><ul><li><strong>マーケティングプランの開発・実行</strong>：エンタープライズ企業の法務部に向け、マーケティングの力で圧倒的なシェア拡大を目指す</li><li><strong>Sales連携まで見通したリード獲得/イベント企画・セミナープロデュース</strong>：セミナーのテーマ設計〜登壇者アサイン〜集客〜セールス連携までの一気通貫のプロデュース</li><li><strong>インサイドセールスでの商談化率向上に向けたマーケ施策</strong>：リードナーチャリングプログラムの設計・改善</li><li><strong>新たなマーケティング施策の開発</strong>：ABM（アカウントベースドマーケティング）の企画・推進、マーケティング施策のROI分析・PDCA高速改善</li></ul><strong>【応募要件】</strong><p><span class='tag tag-must'>MUST</span></p><ul><li>代理店5年以上、事業会社3年以上のマーケティングの実務経験</li><li>マーケティング施策の企画をリードした経験</li><li>BtoBウェビナー/セミナーの企画・運営経験</li><li>展示会・オフラインイベント等の企画・運営経験</li><li>マーケティング施策の企画・実行・振り返り・改善の経験</li><li>データに基づく施策結果の分析または顧客インサイトをもとにしたマーケティング施策の企画＆実行の経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>エンタープライズ領域でのマーケティング施策の経験</li><li>BtoB ソフトウェア・SaaS領域でのマーケティング実務</li><li>Salesforce、Account Engagement等のMA/CRMツールの実務経験</li><li>コンテンツマーケティングの企画・ディレクション経験</li><li>ABM（アカウントベースドマーケティング）の実務経験</li><li>法務・リーガルテック・コンプライアンス領域の知見</li></ul><strong>【年収】</strong><p>750万円〜1,302万円（年俸制・12分割支給）※固定残業代45時間分含む</p><strong>【福利厚生】</strong><ul><li>健康保険（関東ITソフトウェア健康保険組合）、厚生年金保険、雇用保険、労災保険</li><li>通勤手当（上限5万円/月）</li><li>オフィス環境構築支援（上限5万円）</li><li>副業可（要事前申請）</li><li>ストックオプション制度</li><li>フルフレックス制（コアタイムなし）</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京都中央区</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span><span class="pill">📈 ストックオプション</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.mntsq.co.jp" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://careers.mntsq.co.jp/" target="_blank">💼 採用サイト</a><a class="lbtn lbtn-out" href="https://note.mntsq.co.jp/" target="_blank">📝 note</a><a class="lbtn lbtn-out" href="https://tech.mntsq.co.jp/" target="_blank">🛠️ Tech Blog</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">CMO候補(BtoBマーケティング)</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">オープンワーク株式会社</div>
+  <div class="co-url"><a href="https://www.openwork.co.jp/" target="_blank">https://www.openwork.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>設立</th><td>2007年</td></tr><tr><th>従業員数</th><td>約170名</td></tr><tr><th>上場区分</th><td>東証グロース市場（2022年12月上場）</td></tr><tr><th>ユーザー数</th><td>約758万人</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>&quot;口コミサイト運営会社&quot;ではなく、&quot;キャリアインフラ&quot;への進化フェーズ - 2,000万件超の口コミデータと転職潜在層DBを武器に、「人と企業の最適配置」を実現する次世代キャリアプラットフォーム構想を推進。</li><li>&quot;完成された大企業&quot;ではなく、&quot;経営レイヤーを創る側&quot;の環境 - 従業員170名規模ながら部長職は全社で2名というフラット組織。成果ベースで最短1〜3ヶ月で登用判断される実力主義カルチャー。</li><li>&quot;単なるM&A推進&quot;ではなく、&quot;経営人材を量産する&quot;ロールアップ戦略 - 年1社ペースでM&Aを推進し、PMI後に経営人材を送り込み、既存事業を再成長させる構想。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">オープンワーク株式会社は、「働きがいをすべての人へ」をミッションに、日本の労働市場へ透明性をもたらすHR Tech企業です。2007年に創業者・増井慎二郎氏が立ち上げた「Vorkers」を起点に、2019年に「OpenWork」へリブランディング。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>オープンワーク株式会社は、「働きがいをすべての人へ」をミッションに、日本の労働市場へ透明性をもたらすHR Tech企業です。2007年に創業者・増井慎二郎氏が立ち上げた「Vorkers」を起点に、2019年に「OpenWork」へリブランディング。現在は国内最大級となる1,300万件超の社員クチコミ・評価スコアを蓄積し、個人が主体的に企業を選ぶためのキャリアプラットフォームへ成長しています。</p><p>2022年12月には東証グロース市場へ上場。近年は「OpenWorkリクルーティング」が利用企業1,000社を突破し、学生ユーザー数も過去最多の32万人へ到達するなど、採用支援領域での存在感も拡大。さらに、クチコミデータを資本市場分析や組織課題解決に活用するオルタナティブデータ事業も前期比134％成長を実現しています。</p><p>AIと専門スタッフによる二重審査でクチコミ品質を担保するユーザーファーストの姿勢を強みに、LINE、博報堂、マッキンゼー、Amazonなど多様な出身者が集うフラットな組織文化のもと、日本の&quot;働きがい&quot;そのものを変革する挑戦を続ける企業です。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 CMO候補(BtoBマーケティング)</div>
+          <div class="job-preview">OpenWorkリクルーティングサービスを中心としたBtoBマーケティング全体をマネジメント</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>2007年にサービスを開始したOpenWork。業界最大級の社員クチコミサイトとして成長しており、ユーザー登録は約758万人を突破し、約2,010万件のクチコミ評価スコア数を保有しています。</p><p>そんな弊社が掲げているミッションが、「ひとりひとりが輝く、ジョブマーケットを創る」です。</p><ul><li>求人票や企業の採用ホームページなどだけではわからない、企業のリアルな実態を開示することによりジョブマーケットの透明性を高めること</li><li>個人が主体的にキャリアを選択し、ミスマッチのない転職を実現すること</li><li>誠実な経営を行う経営者に人が集まる世界を創ること</li></ul><p>を目指しています。</p><strong>【具体的な業務内容】</strong><p>OpenWorkリクルーティングサービスを中心としたBtoBマーケティングの全体を管理いただきます。Q毎に決められたKPIを達成するために、外部講演、共催セミナー、メール、広告、展示会、自社イベント等、様々な施策の立案〜実行〜検証、また施策に必要なコンテンツ制作をメンバーやパートナー企業と回していただきます。</p><strong>【活用ツール】</strong><ul><li>リード管理/SFA/CRM：Salesforce、Account Engagement</li><li>分析ツール：GA4、Clarity、Tableau、GTM</li><li>クリエイティブ制作：AdobeCC</li><li>マーケ施策実施：ウェビナー管理ツール、Web接客ツール</li><li>コミュニケーション：zoom、Slack</li></ul><strong>【部署体制】</strong><p>所属するのはtoBマーケティングユニットで、商談獲得を目標としたチームになります。toBマーケティングユニットは、マーケティングとインサイドセールスが一緒となった組織です。マネジャー1名、正社員5名、派遣社員2名、複数のパートナー企業の業務委託で構成されています。</p><strong>【応募資格】</strong><p><span class='tag tag-must'>MUST</span></p><ul><li>BtoBマーケティング経験5年以上目安</li><li>マーケティング業務の中で、以下のような取り組みのオーナーとしての運用実績が3つ以上ある（広告運用、メルマガ運用、セミナー運用、展示会出展、外部講演参加、Webサイト制作/改善、SNS運用、SEO運用、ホワイトペーパー制作、データ分析等）</li><li>5名以上の組織をマネジメントした経験がある（評価、育成など）</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>マーケティングツールの活用やデータを基にした取り組みが推進できる</li><li>法人向けのオウンドメディアの立ち上げや成果創出経験あり</li><li>マーケティングテクノロジーの理解や実装に長けている</li><li>マーケティングデータの分析経験がある</li><li>HR業界のマーケティング経験がある</li></ul><strong>【年収】</strong><p>750万～1200万円（年間基準賞与3か月分を含む）※みなし残業40時間を含む</p><strong>【福利厚生】</strong><ul><li>各種保険完備</li><li>リモートワーク制度</li><li>出産祝金：1人目50万円、2人目100万円、3人目150万円</li><li>結婚祝金：50万円</li><li>自己啓発支援制度：自己研鑽のために年12万円まで補助</li><li>副業制度：副業を許可しており、個人のチャレンジや成長を応援</li><li>WeWork特典：コーヒーマシーン、ビールサーバー等</li></ul><strong>【働き方】</strong><ul><li>月間フレックス制（コアタイム10：00～16：00）</li><li>リモートワークが基本</li><li>全社有給消化率62.1％（2023年度）</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 リモートワーク</span><span class="pill">✅ 副業可</span><span class="pill">📈 東証グロース</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.openwork.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが齊藤 健一郎 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
